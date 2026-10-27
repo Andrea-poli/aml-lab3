@@ -172,3 +172,20 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+# --- AML lab project ---
+# Datasets: never push them on GitHub (keep only the empty folder)
+data/*
+!data/.gitkeep
+*.zip
+
+# Saved model weights
+checkpoints/*
+!checkpoints/.gitkeep
+*.pth
+*.pt
+
+# Weights & Biases local run files
+wandb/
+
+# macOS
+.DS_Store

@@ -1,1 +1,7 @@
-
+# Tested on Google Colab with torch 2.11.0 / torchvision 0.26.0 (CUDA 13.0)
+torch
+torchvision
+numpy
+matplotlib
+tqdm
+wandb
