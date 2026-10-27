@@ -11,7 +11,7 @@ import torch
 import torchvision.transforms as T
 from torchvision.datasets import ImageFolder
 
-URL = 'http://cs231n.stanford.edu/tiny-imagenet-200.zip'
+URL = 'https://cs231n.stanford.edu/tiny-imagenet-200.zip'
 
 # ImageNet RGB statistics (also used by utils/visualization.py to denormalize)
 MEAN = [0.485, 0.456, 0.406]
