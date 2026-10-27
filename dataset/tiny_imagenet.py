@@ -27,8 +27,18 @@ def download_tiny_imagenet(data_dir='data'):
 
     os.makedirs(data_dir, exist_ok=True)
     zip_path = os.path.join(data_dir, 'tiny-imagenet-200.zip')
-    print('Downloading TinyImageNet (~240 MB)...')
-    urllib.request.urlretrieve(URL, zip_path)
+    if os.path.exists(zip_path):
+        # e.g. zip copied from Google Drive when the Stanford server is unreachable
+        print(f'Using existing archive {zip_path}')
+    else:
+        print('Downloading TinyImageNet (~240 MB)...')
+        try:
+            urllib.request.urlretrieve(URL, zip_path)
+        except OSError as e:
+            if os.path.exists(zip_path):
+                os.remove(zip_path)          # remove a partial download
+            raise SystemExit(f'Download failed ({e}). The server may be down: retry later, '
+                             f'or put tiny-imagenet-200.zip in {data_dir}/ and run again.')
 
     print('Extracting...')
     with zipfile.ZipFile(zip_path) as zf:
